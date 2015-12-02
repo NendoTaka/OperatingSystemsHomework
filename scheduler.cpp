@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     int n; //variable for arguments
     int pipeline[2][2]; //array for pipelines
     int child; // used for fork
-
+    int fileRows;
     // reads arguments into int
     n = atoi(argv[1]);
 
@@ -100,7 +100,7 @@ int main(int argc, char **argv)
         //write to file
 	ofstream myfile("record.txt");
 	myfile << "name 1" << " " << "name 2" << " " << "name 3" << " " << "name4" << endl;
-	for (int i=0; i < number; i++){
+	for (int i=0; i < fileRows; i++){
 		myfile << orderQueue[i]<< endl;
 	}
 	myfile.close();
