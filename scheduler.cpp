@@ -58,6 +58,7 @@ int main(int argc, char **argv)
             int arrive; // arrival time
             int burst; // CPU burst
             int process; // process number
+            int wait = 0; // wait time
         };
 
         write(pipeline[1][1], &n, sizeof(n)); // writes n to pipe
@@ -89,6 +90,7 @@ int main(int argc, char **argv)
                 }
                 j += 1;
             }
+            readyQueue[loc].wait = time - arrive;
             time += readyQueue[loc].burst;
             orderQueue.push_back(readyQueue[loc]);
             readyQueue.erase(readyQueue.begin()+loc);
