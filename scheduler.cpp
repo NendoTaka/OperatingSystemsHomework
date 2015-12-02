@@ -19,6 +19,7 @@ Instructions for compilation and execution:
 #include <math.h>
 #include <signal.h>
 #include <vector>
+#include <fstream>
 using namespace std;
 
 int main(int argc, char **argv)
@@ -95,6 +96,12 @@ int main(int argc, char **argv)
         }
 
         //write to file
+	ofstream myfile("record.txt");
+	myfile << "name 1" << " " << "name 2" << " " << "name 3" << " " << "name4" << endl;
+	for (int i=0; i < number; i++){
+		myfile << orderQueue[i]<< endl;
+	}
+	myfile.close();
 
         orderQueue.clear();
         orderQueue.resize(0);
