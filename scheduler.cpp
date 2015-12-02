@@ -59,7 +59,7 @@ int main(int argc, char **argv)
             int arrive; // arrival time
             int burst; // CPU burst
             int process; // process number
-            int wait = 0; // wait time
+            int wait; // wait time
         };
 
         write(pipeline[1][1], &n, sizeof(n)); // writes n to pipe
@@ -98,12 +98,16 @@ int main(int argc, char **argv)
         }
 
         //write to file
-	ofstream myfile("record.txt");
-	myfile << "name 1" << " " << "name 2" << " " << "name 3" << " " << "name4" << endl;
-	for (int i=0; i < fileRows; i++){
-		myfile << orderQueue[i]<< endl;
-	}
-	myfile.close();
+        ofstream myfile("record.txt");
+        myfile << "Arrival time" << " " << "Process" << " " << "CPU burst" << " " << "Waiting time" << endl;
+        for (int i=0; i < n; i++){
+            myfile << orderQueue[i].arrive << ' ';
+            myfile << orderQueue[i].process << ' ';
+            myfile << orderQueue[i].burst << ' ';
+            myfile << orderQueue[i].wait << ' ';
+            myfile << endl;
+        }
+        myfile.close();
 
         orderQueue.clear();
         orderQueue.resize(0);
