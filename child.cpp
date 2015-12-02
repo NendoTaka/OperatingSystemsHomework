@@ -1,4 +1,4 @@
-/*Course: CSC460, Homework 5
+/*Course: CSC460, Homework 6
 Programmers: Klayton Hawkins, Kendall Lewis
 Grok Usernames: kh, kl
 Contribution Percentage: 50%, 50%

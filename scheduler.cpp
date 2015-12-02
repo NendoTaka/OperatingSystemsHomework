@@ -1,4 +1,4 @@
-/*Course: CSC460, Homework 5
+/*Course: CSC460, Homework 6
 Programmers: Klayton Hawkins, Kendall Lewis
 Grok Usernames: kh, kl
 Contribution Percentage: 50%, 50%
@@ -96,10 +96,21 @@ int main(int argc, char **argv)
             readyQueue[loc].wait = time - readyQueue[loc].arrive;
             // updates time
             time += readyQueue[loc].burst;
-            // adds process to queue for output
+            // adds process to queue for order
             orderQueue.push_back(readyQueue[loc]);
             // removes process from ready queue
             readyQueue.erase(readyQueue.begin()+loc);
+        }
+
+        for (int i = 0; i < n; i++){ // n times
+            int loc = 0;
+            for (unsigned int j = 0; j < orderQueue.size(); j++){
+                if (i == orderQueue[j].process){
+                    loc = j;
+                }
+            }
+            // adds process to queue for output
+            readyQueue.push_back(orderQueue[loc]);
         }
 
         //write to file
@@ -107,10 +118,10 @@ int main(int argc, char **argv)
         myfile << "Arrival time" << "   " << "Process" << "   " << "CPU burst";
         myfile << "   " << "Waiting time" << endl;
         for (int i=0; i < n; i++){
-            myfile << setw(8) << right << orderQueue[i].arrive << ' ';
-            myfile << setw(10) << right << orderQueue[i].process << ' ';
-            myfile << setw(11) << right << orderQueue[i].burst;
-            myfile << setw(14) << right << orderQueue[i].wait;
+            myfile << setw(8) << right << readyQueue[i].arrive << ' ';
+            myfile << setw(10) << right << readyQueue[i].process << ' ';
+            myfile << setw(11) << right << readyQueue[i].burst;
+            myfile << setw(14) << right << readyQueue[i].wait;
             myfile << endl;
         }
         myfile.close(); // closes file
@@ -128,7 +139,8 @@ int main(int argc, char **argv)
         close(pipeline[1][1]); // closes write to childs pipeline
         close(pipeline[0][0]); // closes read end of parents pipeline
         //child executes file child
-        execl("child", "", to_string(pipeline[1][0]).c_str(), to_string(pipeline[0][1]).c_str(), NULL);
+        execl("child", "", to_string(pipeline[1][0]).c_str(),
+              to_string(pipeline[0][1]).c_str(), NULL);
         cout << "Child failed to exec" << endl;
     }
 
