@@ -1,0 +1,168 @@
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	gitReport_hw6
+
+nothing added to commit but untracked files present (use "git add" to track)
+commit 185b5ea59345b76289ba4d0c0854244d063136a6
+Author: Klayton Hawkins <kh@grok.MissouriState.edu>
+Date:   Tue Dec 1 22:30:35 2015 -0600
+
+    Merged
+
+ scheduler.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 20ab0559b31a44f5ff69c37b9a26ef1624deb951
+Merge: 399935d c40a34a
+Author: Klayton Hawkins <kh@grok.MissouriState.edu>
+Date:   Tue Dec 1 22:29:51 2015 -0600
+
+    Merge branch 'master' of https://github.com/NendoTaka/OperatingSystemsHomework
+
+commit 399935db702018ba838e6a60f406c8c82fcc5b36
+Author: Klayton Hawkins <kh@grok.MissouriState.edu>
+Date:   Tue Dec 1 22:29:29 2015 -0600
+
+    Formatted output further
+
+ child         | Bin 0 -> 9269 bytes
+ child.cpp     |   2 +-
+ record.txt    |  16 ++++++++++++++++
+ scheduler     | Bin 0 -> 42448 bytes
+ scheduler.cpp |  15 ++++++++-------
+ 5 files changed, 25 insertions(+), 8 deletions(-)
+
+commit c40a34a62abedfad75b44e4f23b728ee49fb0f4b
+Merge: 9ffc65c 8a730a1
+Author: Kendall Lewis <kl@grok.MissouriState.edu>
+Date:   Tue Dec 1 22:04:53 2015 -0600
+
+    Merged with new code
+
+commit 9ffc65cba74848a8daad88e7060f54b615987c02
+Author: Kendall Lewis <kl@grok.MissouriState.edu>
+Date:   Tue Dec 1 22:03:42 2015 -0600
+
+    Modified output
+
+ scheduler.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 8a730a102ec5329697684eba2851b06f0ed6ca5c
+Author: Klayton Hawkins <kh@grok.MissouriState.edu>
+Date:   Tue Dec 1 22:01:09 2015 -0600
+
+    Updated output
+
+ scheduler.cpp | 18 +++++++++++-------
+ 1 file changed, 11 insertions(+), 7 deletions(-)
+
+commit 924a225c7449c65ab87b82b36f757f10b679327d
+Merge: 40fc1d1 b97632d
+Author: Kendall Lewis <kl@grok.MissouriState.edu>
+Date:   Tue Dec 1 21:57:16 2015 -0600
+
+    Merge branch 'master' of https://github.com/NendoTaka/OperatingSystemsHomework
+
+commit 40fc1d12b0a27c282d31756e3c5e1f105d1c0ea0
+Author: Kendall Lewis <kl@grok.MissouriState.edu>
+Date:   Tue Dec 1 21:57:01 2015 -0600
+
+    Added child and makefiles
+
+ scheduler.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+commit b97632d2f227f5a8200f8858100e5ca5a02f7da3
+Author: Klayton Hawkins <kh@grok.MissouriState.edu>
+Date:   Tue Dec 1 21:52:15 2015 -0600
+
+    Added wait time feature
+
+ scheduler.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit f6c3719ea544164f7d91dc3b67c6a7790100e665
+Author: Klayton Hawkins <kh@grok.MissouriState.edu>
+Date:   Tue Dec 1 21:48:50 2015 -0600
+
+    Updated documentation at top of child and makefile
+
+ child.cpp | 33 ++++++++++++++++++++++++++-------
+ makefile  | 27 ++++++++++++++++++++-------
+ 2 files changed, 46 insertions(+), 14 deletions(-)
+
+commit 6bb359bbe1b169bd96d14d6a9d00c51baf94efa6
+Author: Klayton Hawkins <kh@grok.MissouriState.edu>
+Date:   Tue Dec 1 21:46:08 2015 -0600
+
+    Updated scheduler with more changes
+
+ scheduler.cpp | 66 +++++++++++++++++++++++++++++++++++++++--------------------
+ 1 file changed, 44 insertions(+), 22 deletions(-)
+
+commit 4103a3b267afa6ca60d7425bfba0eca4579d6f42
+Merge: 0dd819a 7a4e8c0
+Author: Kendall Lewis <kl@grok.MissouriState.edu>
+Date:   Tue Dec 1 21:44:25 2015 -0600
+
+    Merge branch 'master' of https://github.com/NendoTaka/OperatingSystemsHomework
+
+commit 0dd819a43a83b405f81afcf1a1fd7095fb098e3b
+Author: Kendall Lewis <kl@grok.MissouriState.edu>
+Date:   Tue Dec 1 21:43:28 2015 -0600
+
+    Added child and makefiles
+
+ child.cpp | 31 +++++++++++++++++++++++++++++++
+ makefile  |  8 ++++++++
+ 2 files changed, 39 insertions(+)
+
+commit 7a4e8c073bb16d695e596adedc7e446515a14ae6
+Author: Klayton Hawkins <kh@grok.MissouriState.edu>
+Date:   Tue Dec 1 21:38:45 2015 -0600
+
+    Updated error checking and child creation
+
+ scheduler.cpp | 84 +++++++++++++----------------------------------------------
+ 1 file changed, 18 insertions(+), 66 deletions(-)
+
+commit 8b98425559b468c967d0694b3825d5ac0dc655cd
+Author: Klayton Hawkins <kh@grok.MissouriState.edu>
+Date:   Tue Dec 1 21:30:12 2015 -0600
+
+    Updated includes
+
+ scheduler.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 3861a75006587351201ba34f30fdfcb839304ebb
+Author: Klayton Hawkins <kh@grok.MissouriState.edu>
+Date:   Tue Dec 1 21:27:24 2015 -0600
+
+    Copied Trapiziod code to scheduler
+
+ scheduler.cpp | 128 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 128 insertions(+)
+
+commit 11defcafe0fb5716875e63dd6db2e17dcf8c3fb9
+Author: Klayton Hawkins <kh@grok.MissouriState.edu>
+Date:   Tue Dec 1 21:25:48 2015 -0600
+
+    Updated the documentation at top
+
+ scheduler.cpp | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+commit cdde95e8db7b7aa6db8b123a869ce739ce428386
+Author: Klayton Hawkins <kh@grok.MissouriState.edu>
+Date:   Tue Dec 1 21:22:23 2015 -0600
+
+    Made a scheduler file
+
+ scheduler.cpp | 1 +
+ 1 file changed, 1 insertion(+)

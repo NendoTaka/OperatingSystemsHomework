@@ -80,26 +80,32 @@ int main(int argc, char **argv)
         }
 
         for (int i = 0; i < n; i++){ // n times
-            while (time < readyQueue[0].arrive){
+            while (time < readyQueue[0].arrive){ // waits for arrival
                 time += 1;
             }
             unsigned int j = 0;
             int loc = 0;
+            // finds smallest CPU burst in arrived packets
             while (j < readyQueue.size() and time >= readyQueue[j].arrive){
                 if (readyQueue[j].burst < readyQueue[loc].burst){
                     loc = j;
                 }
                 j += 1;
             }
+            // calculates waited time
             readyQueue[loc].wait = time - readyQueue[loc].arrive;
+            // updates time
             time += readyQueue[loc].burst;
+            // adds process to queue for output
             orderQueue.push_back(readyQueue[loc]);
+            // removes process from ready queue
             readyQueue.erase(readyQueue.begin()+loc);
         }
 
         //write to file
         ofstream myfile("record.txt");
-        myfile << "Arrival time" << "   " << "Process" << "   " << "CPU burst" << "   " << "Waiting time" << endl;
+        myfile << "Arrival time" << "   " << "Process" << "   " << "CPU burst";
+        myfile << "   " << "Waiting time" << endl;
         for (int i=0; i < n; i++){
             myfile << setw(8) << right << orderQueue[i].arrive << ' ';
             myfile << setw(10) << right << orderQueue[i].process << ' ';
@@ -107,8 +113,9 @@ int main(int argc, char **argv)
             myfile << setw(14) << right << orderQueue[i].wait;
             myfile << endl;
         }
-        myfile.close();
+        myfile.close(); // closes file
 
+        // deletes vectors
         orderQueue.clear();
         orderQueue.resize(0);
         readyQueue.clear();
