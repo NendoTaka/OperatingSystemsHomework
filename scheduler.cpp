@@ -52,35 +52,57 @@ int main(int argc, char **argv)
     }
 
     if (pid == getpid()){ //if parent
-        float total = 0.0; // initialize total
-        struct out { // create struct
-            int num; //which child
-            float area; //area
+        int time = 0; // timer
+
+        struct ready { // create struct
+            int arrive; // arrival time
+            int burst; // CPU burst
+            int process; // process number
         };
 
-        out* o = new out; // initialize struct
+        write(pipeline[1][1], &n, sizeof(n)); // writes n to pipe
+
+        close(pipeline[0][1]);
+        close(pipeline[1][0]);
+
+        vector<ready> readyQueue;
+        vector<ready> orderQueue;
+        ready* o = new ready; // initialize struct
+
         for (int i = 0; i < n; i++){ // reads n times
-            close(pipeline[8][1]); //close write to parents read pipeline
-            read(pipeline[8][0], o, sizeof(o)); //reads struct from pipe
-            total += o->area; // adds area to total
-            if (still > 0){ // if you still have remaining calculations
-                write(pipeline[o->num][1], &currL, sizeof(currL)); //write left to child
-                write(pipeline[o->num][1], &currR, sizeof(currR)); //write right to child
-                currL = currR; //increments currL by inc
-                currR = currR + inc; // increments currR by inc
-                still -= 1; //-1 to remaining writes left
-                numTasks[o->num] += 1; // adds one to number of tasks for child
+            read(pipeline[0][0], o, sizeof(o)); //reads struct from pipe
+            readyQueue.push_back(ready()); // adds a struct to the ready queue
+            readyQueue[i].arrive = o->arrive; // saves arrival time
+            readyQueue[i].burst = o->burst; // saves CPU burst
+            readyQueue[i].process = i; // saves process number
+        }
+
+        for (int i = 0; i < n; i++){ // n times
+            while (time < readyQueue[0].arrive){
+                time += 1;
             }
-        }
-        for (int i = 0; i < m; i++){ //loop to kill children
-            close(pipeline[i][1]); // close write to childrens pipelines
-            kill(cid[i], SIGKILL); //kills child
-            cout << "Child " << i << " computed " << numTasks[i] << " trapezoids" << endl;
+            int j = 0;
+            int loc = 0;
+            while (j < readyQueue.size() and time >= readyQueue[j].arrive){
+                if (readyQueue[j].burst < readyQueue[loc].burst){
+                    loc = j;
+                }
+                j += 1;
+            }
+            time += readyQueue[loc].burst;
+            orderQueue.push_back(readyQueue[loc]);
+            readyQueue.erase(readyQueue.begin()+loc);
         }
 
-        cout << endl << "The total calculated area is " << total << endl; //print total
+        //write to file
 
-        close(pipeline[8][0]); //close read
+        orderQueue.clear();
+        orderQueue.resize(0);
+        readyQueue.clear();
+        readyQueue.resize(0);
+
+        close(pipeline[1][1]); // close write to childrens pipelines
+        close(pipeline[0][0]); //close read
     }
     else {
         close(pipeline[1][1]); // closes write to childs pipeline
