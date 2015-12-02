@@ -18,6 +18,7 @@ Instructions for compilation and execution:
 #include <stdio.h>
 #include <math.h>
 #include <signal.h>
+#include <vector>
 using namespace std;
 
 int main(int argc, char **argv)
