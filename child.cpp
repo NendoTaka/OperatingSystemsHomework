@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 {
     int pipeline[2]; // array for pipes
     int num; // int for number of children
-    int timeLapse, cpuBurst, arrivalTime; // initialize variables
+    int timeLapse, cpuBurst, arrivalTime = 0; // initialize variables
     struct out { // create struct
         int arrive; // arrival time
         int burst; // CPU burst

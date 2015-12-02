@@ -20,6 +20,7 @@ Instructions for compilation and execution:
 #include <signal.h>
 #include <vector>
 #include <fstream>
+#include <iomanip>
 using namespace std;
 
 int main(int argc, char **argv)
@@ -83,7 +84,7 @@ int main(int argc, char **argv)
             while (time < readyQueue[0].arrive){
                 time += 1;
             }
-            int j = 0;
+            unsigned int j = 0;
             int loc = 0;
             while (j < readyQueue.size() and time >= readyQueue[j].arrive){
                 if (readyQueue[j].burst < readyQueue[loc].burst){
@@ -91,7 +92,7 @@ int main(int argc, char **argv)
                 }
                 j += 1;
             }
-            readyQueue[loc].wait = time - arrive;
+            readyQueue[loc].wait = time - readyQueue[loc].arrive;
             time += readyQueue[loc].burst;
             orderQueue.push_back(readyQueue[loc]);
             readyQueue.erase(readyQueue.begin()+loc);
@@ -99,12 +100,12 @@ int main(int argc, char **argv)
 
         //write to file
         ofstream myfile("record.txt");
-        myfile << "Arrival time" << " " << "Process" << " " << "CPU burst" << " " << "Waiting time" << endl;
+        myfile << "Arrival time" << "   " << "Process" << "   " << "CPU burst" << "   " << "Waiting time" << endl;
         for (int i=0; i < n; i++){
-            myfile << orderQueue[i].arrive << ' ';
-            myfile << orderQueue[i].process << ' ';
-            myfile << orderQueue[i].burst << ' ';
-            myfile << orderQueue[i].wait << ' ';
+            myfile << setw(8) << right << orderQueue[i].arrive << ' ';
+            myfile << setw(10) << right << orderQueue[i].process << ' ';
+            myfile << setw(11) << right << orderQueue[i].burst;
+            myfile << setw(14) << right << orderQueue[i].wait;
             myfile << endl;
         }
         myfile.close();
